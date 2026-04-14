@@ -3,250 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShieldCore — AI-Powered Antivirus Protection</title>
+<title>VaultGuard — Complete Digital Security Suite</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <style>
   :root {
-    --c1: #0a0e1a;
-    --c2: #1a0505;
-    --c3: #3d0c0c;
-    --c4: #c01818;
-    --c5: #e84040;
-    --c6: #ffffff;
-    --c7: #fdeaea;
-    --c8: #ff3c5a;
-    --c9: #fff5f5;
-    --c10: #8a6060;
-    --r1: 16px;
-    --r2: 32px;
-    --sh1: 0 4px 32px rgba(192,24,24,0.18);
-    --sh2: 0 8px 48px rgba(192,24,24,0.28);
-    --t1: font-family:'Plus Jakarta Sans',sans-serif;
-    --t2: font-family:'Inter',sans-serif;
+    --base: #1a0505;
+    --deep: #0d0000;
+    --mid: #3d0c0c;
+    --prime: #d11e1e;
+    --bright: #e84040;
+    --white: #ffffff;
+    --offwhite: #fff5f5;
+    --accent: #ff6060;
+    --muted: #906060;
+    --rad-sm: 14px;
+    --rad-lg: 28px;
+    --glow-sm: 0 4px 28px rgba(209,30,30,0.18);
+    --glow-md: 0 8px 44px rgba(209,30,30,0.28);
+    --font-head: 'Sora', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--c6); color: var(--c1); overflow-x: hidden; }
+  body { font-family: var(--font-body); background: var(--white); color: var(--base); overflow-x: hidden; }
 
-  /* ─── NAV ─── */
-  .xn-wrap { background: white; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .xn-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; max-width: 1280px; margin: 0 auto; }
-  .xn-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .xn-logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--c4), var(--c5)); border-radius: 10px; display: grid; place-items: center; font-size: 18px; color: #fff; box-shadow: 0 0 18px rgba(232,64,64,0.4); }
-  .xn-logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.25rem; color: #fff; letter-spacing: -0.5px; }
-  .xn-logo-text span { color: var(--c5); }
-  .xn-menu { display: flex; gap: 2rem; list-style: none; }
-  .xn-menu a { color: gray; text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
-  .xn-menu a:hover { color: gray; }
-  @media (max-width: 991px) { .xn-menu { display: none !important; } }
+  /* ─── NAVBAR ─── */
+  .nv-bar { background: white; padding: 0 2rem; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .nv-container { display: flex; align-items: center; justify-content: space-between; height: 70px; max-width: 1300px; margin: 0 auto; }
+  .nv-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nv-brand-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--prime), var(--bright)); border-radius: 11px; display: grid; place-items: center; font-size: 18px; color: #fff; box-shadow: 0 0 18px rgba(232,64,64,0.4); }
+  .nv-brand-name { font-family: var(--font-head); font-weight: 800; font-size: 1.3rem; color: var(--base); letter-spacing: -0.5px; }
+  .nv-brand-name span { color: var(--prime); }
+  .nv-links { display: flex; gap: 2rem; list-style: none; }
+  .nv-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nv-links a:hover { color: var(--prime); }
+  @media (max-width: 991px) { .nv-links { display: none !important; } }
 
-  /* ─── HERO BANNER ─── */
-  .xh-sec { min-height: 88vh; background: var(--c1); position: relative; overflow: hidden; display: flex; align-items: center; }
-  .xh-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(192,24,24,0.22) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(232,64,64,0.12) 0%, transparent 60%); }
-  .xh-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
-  .xh-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 6rem 2rem; }
-  .xh-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(192,24,24,0.15); border: 1px solid rgba(192,24,24,0.35); color: var(--c5); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 1.5rem; }
-  .xh-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; color: #fff; line-height: 1.05; letter-spacing: -2px; margin-bottom: 1.5rem; }
-  .xh-title em { font-style: normal; background: linear-gradient(90deg, var(--c4), var(--c5)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .xh-sub { font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; }
-  .xh-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .xh-btn-p { background: linear-gradient(135deg, var(--c4), var(--c5)); color: #fff; padding: 14px 32px; border-radius: 100px; font-weight: 600; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--sh2); }
-  .xh-btn-p:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(192,24,24,0.45); color: #fff; }
-  .xh-btn-s { background: transparent; color: #fff; padding: 14px 32px; border-radius: 100px; font-weight: 600; font-size: 1rem; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.25); transition: border-color 0.2s, background 0.2s; }
-  .xh-btn-s:hover { border-color: var(--c5); background: rgba(232,64,64,0.08); color: var(--c5); }
-  .xh-stats { display: flex; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
-  .xh-stat-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; }
-  .xh-stat-lbl { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
-  .xh-shield { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); width: min(420px, 40vw); opacity: 0.85; }
-  .xh-shield-svg { width: 100%; height: auto; animation: xfloat 4s ease-in-out infinite; }
-  @keyframes xfloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+  /* ─── HERO ─── */
+  .hs-wrap { min-height: 88vh; background: var(--base); position: relative; overflow: hidden; display: flex; align-items: center; }
+  .hs-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 65% 50%, rgba(209,30,30,0.25) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 15% 80%, rgba(232,64,64,0.14) 0%, transparent 60%); }
+  .hs-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; }
+  .hs-body { position: relative; z-index: 2; max-width: 1300px; margin: 0 auto; padding: 6rem 2rem; width: 100%; }
+  .hs-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(209,30,30,0.15); border: 1px solid rgba(232,64,64,0.35); color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 1.5rem; }
+  .hs-headline { font-family: var(--font-head); font-size: clamp(2.6rem, 5.5vw, 4.8rem); font-weight: 800; color: #fff; line-height: 1.06; letter-spacing: -2px; margin-bottom: 1.5rem; }
+  .hs-headline em { font-style: normal; background: linear-gradient(90deg, var(--bright), #70b0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hs-tagline { font-size: 1.1rem; color: rgba(255,255,255,0.58); max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hs-cta-main { background: linear-gradient(135deg, var(--prime), var(--bright)); color: #fff; padding: 14px 34px; border-radius: 100px; font-weight: 700; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--glow-md); }
+  .hs-cta-main:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(209,30,30,0.45); color: #fff; }
+  .hs-cta-ghost { background: transparent; color: #fff; padding: 14px 34px; border-radius: 100px; font-weight: 600; font-size: 1rem; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.22); transition: border-color 0.2s, background 0.2s; }
+  .hs-cta-ghost:hover { border-color: var(--accent); background: rgba(232,64,64,0.1); color: var(--accent); }
+  .hs-metrics { display: flex; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+  .hs-metric-val { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: #fff; }
+  .hs-metric-txt { font-size: 0.8rem; color: rgba(255,255,255,0.48); margin-top: 3px; }
 
-  /* ─── CALL NOW SECTION ─── */
-  .xcn-sec { background: white; padding: 2.5rem 2rem; }
-  .xcn-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; text-align: center; }
-  .xcn-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 700; color: black; letter-spacing: 0.5px; }
-  .xcn-btn { display: inline-flex; align-items: center; gap: 10px; background: #bd0900; color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; padding: 14px 36px; border-radius: 100px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 6px 30px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s; letter-spacing: -0.3px; }
-  .xcn-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 40px rgba(0,0,0,0.3);}
-  .xcn-btn i { font-size: 1.1rem; }
+  /* ─── HOTLINE BANNER ─── */
+  .hl-strip { background: white; padding: 2.4rem 2rem; border-bottom: 1px solid #eee; }
+  .hl-strip-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; text-align: center; }
+  .hl-strip-msg { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--base); }
+  .hl-strip-btn { display: inline-flex;
+  align-items: center;
+  gap: 0px;
+  background: var(--prime);
+  color: white;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 15px 25px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 28px rgba(209,30,30,0.3);
+  transition: transform 0.2s, box-shadow 0.2s; }
+  
+  .hl-strip-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 36px rgba(209,30,30,0.45); color: #fff; }
 
-  /* ─── PLANS ─── */
-  .xpl-sec { background: var(--c9); padding: 7rem 2rem; }
-  .xs-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -1.5px; color: var(--c1); text-align: center; margin-bottom: 0.75rem; }
-  .xs-sub { text-align: center; color: var(--c10); font-size: 1rem; max-width: 500px; margin: 0 auto 3.5rem; line-height: 1.65; }
-  .xpl-card { background: #fff; border-radius: 24px; padding: 2.5rem 2rem; border: 1.5px solid rgba(0,0,0,0.06); position: relative; transition: transform 0.25s, box-shadow 0.25s; height: 100%; }
-  .xpl-card:hover { transform: translateY(-6px); box-shadow: var(--sh2); }
-  .xpl-card.xpl-featured { border-color: var(--c4); box-shadow: var(--sh2); transform: scale(1.04); }
-  .xpl-card.xpl-featured:hover { transform: scale(1.04) translateY(-6px); }
-  .xpl-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--c4), var(--c5)); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 18px; border-radius: 100px; white-space: nowrap; }
-  .xpl-tag { font-size: 0.72rem; font-weight: 600; color: var(--c10); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-  .xpl-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--c1); margin-bottom: 1.25rem; }
-  .xpl-price { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--c1); line-height: 1; }
-  .xpl-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 8px; }
-  .xpl-price span { font-size: 0.95rem; font-weight: 400; color: var(--c10); }
-  .xpl-old { font-size: 0.9rem; color: var(--c10); text-decoration: line-through; margin-top: 4px; }
-  .xpl-save { font-size: 0.82rem; font-weight: 700; color: var(--c8); margin-left: 8px; }
-  .xpl-devices { font-size: 0.85rem; color: var(--c10); margin-bottom: 1.5rem; margin-top: 0.25rem; }
-  .xpl-buy { display: block; width: 100%; text-align: center; padding: 13px; border-radius: 100px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; margin-bottom: 1.75rem; border: none; cursor: pointer; }
-  .xpl-buy-primary { background: linear-gradient(135deg, var(--c4), var(--c5)); color: #fff; box-shadow: var(--sh1); }
-  .xpl-buy-primary:hover { box-shadow: var(--sh2); transform: translateY(-1px); color: #fff; }
-  .xpl-buy-outline { background: transparent; color: var(--c4); border: 1.5px solid var(--c4) !important; }
-  .xpl-buy-outline:hover { background: var(--c4); color: #fff; }
-  .xpl-feat { list-style: none; padding: 0; margin: 0; }
-  .xpl-feat li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.04); color: var(--c1); }
-  .xpl-feat li:last-child { border-bottom: none; }
-  .xpl-feat li.xpl-no { color: var(--c10); }
-  .xpl-feat li i { width: 16px; flex-shrink: 0; font-size: 0.8rem; }
-  .xpl-feat li i.fa-check { color: var(--c4); }
-  .xpl-feat li i.fa-xmark { color: #ccc; }
-  .xpl-explore { display: block; text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--c4); font-weight: 600; text-decoration: none; }
-  .xpl-explore:hover { text-decoration: underline; color: var(--c3); }
-  .xpl-guarantee { text-align: center; margin-top: 2.5rem; font-size: 0.9rem; color: var(--c10); }
-  .xpl-guarantee i { color: var(--c4); margin-right: 6px; }
+  /* ─── PROMISE SECTION ─── */
+  .pm-sec { background: #fff; padding: 6rem 2rem; }
+  .pm-inner { max-width: 1300px; margin: 0 auto; }
+  .sec-heading { font-family: var(--font-head); font-size: clamp(1.9rem, 3.8vw, 2.8rem); font-weight: 800; letter-spacing: -1.5px; color: var(--base); text-align: center; margin-bottom: 0.75rem; }
+  .sec-subtext { text-align: center; color: var(--muted); font-size: 1rem; max-width: 520px; margin: 0 auto 3.5rem; line-height: 1.65; }
+  .pm-card { background: var(--offwhite); border-radius: 22px; padding: 2.2rem 1.8rem; border: 1.5px solid rgba(209,30,30,0.08); height: 100%; transition: transform 0.25s, box-shadow 0.25s; }
+  .pm-card:hover { transform: translateY(-5px); box-shadow: var(--glow-md); }
+  .pm-icon-wrap { width: 52px; height: 52px; background: linear-gradient(135deg, var(--prime), var(--bright)); border-radius: 14px; display: grid; place-items: center; font-size: 1.3rem; color: #fff; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(209,30,30,0.3); }
+  .pm-card-title { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; color: var(--base); margin-bottom: 0.5rem; }
+  .pm-card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.68; }
+
+  /* ─── PRICING PLANS ─── */
+  .pr-sec { background: var(--offwhite); padding: 7rem 2rem; }
+  .plan-tile { background: #fff; border-radius: 22px; padding: 2.4rem 2rem; border: 1.5px solid rgba(0,0,0,0.06); position: relative; transition: transform 0.25s, box-shadow 0.25s; height: 100%; }
+  .plan-tile:hover { transform: translateY(-6px); box-shadow: var(--glow-md); }
+  .plan-tile.plan-highlight { border-color: var(--prime); box-shadow: var(--glow-md); transform: scale(1.04); }
+  .plan-tile.plan-highlight:hover { transform: scale(1.04) translateY(-6px); }
+  .plan-ribbon { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--prime), var(--bright)); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 18px; border-radius: 100px; white-space: nowrap; }
+  .plan-category { font-size: 0.72rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .plan-title { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; color: var(--base); margin-bottom: 1.2rem; }
+  .plan-amount { font-family: var(--font-head); font-size: 2.8rem; font-weight: 800; color: var(--base); line-height: 1; }
+  .plan-amount sup { font-size: 1.4rem; vertical-align: top; margin-top: 8px; }
+  .plan-amount span { font-size: 0.95rem; font-weight: 400; color: var(--muted); }
+  .plan-was { font-size: 0.9rem; color: var(--muted); text-decoration: line-through; margin-top: 4px; }
+  .plan-savings { font-size: 0.82rem; font-weight: 700; color: #1a9e5c; margin-left: 8px; }
+  .plan-scope { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; margin-top: 0.3rem; }
+  .plan-cta { display: block; width: 100%; text-align: center; padding: 13px; border-radius: 100px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; margin-bottom: 1.75rem; border: none; cursor: pointer; }
+  .plan-cta-filled { background: linear-gradient(135deg, var(--prime), var(--bright)); color: #fff; box-shadow: var(--glow-sm); }
+  .plan-cta-filled:hover { box-shadow: var(--glow-md); transform: translateY(-1px); color: #fff; }
+  .plan-cta-lined { background: transparent; color: var(--prime); border: 1.5px solid var(--prime) !important; }
+  .plan-cta-lined:hover { background: var(--prime); color: #fff; }
+  .plan-perks { list-style: none; padding: 0; margin: 0; }
+  .plan-perks li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.04); color: var(--base); }
+  .plan-perks li:last-child { border-bottom: none; }
+  .plan-perks li.perk-off { color: var(--muted); }
+  .plan-perks li i { width: 16px; flex-shrink: 0; font-size: 0.8rem; }
+  .plan-perks li i.fa-check { color: var(--prime); }
+  .plan-perks li i.fa-xmark { color: #ccc; }
+  .plan-more { display: block; text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--prime); font-weight: 600; text-decoration: none; }
+  .plan-more:hover { text-decoration: underline; color: var(--mid); }
+  .plan-footnote { text-align: center; margin-top: 2.5rem; font-size: 0.9rem; color: var(--muted); }
+  .plan-footnote i { color: var(--prime); margin-right: 6px; }
+
+  /* ─── ASSURANCE SECTION ─── */
+  .as-sec { background: #fff; padding: 6rem 2rem; }
+  .as-inner { max-width: 1300px; margin: 0 auto; }
+  .as-title { font-family: var(--font-head); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--base); text-align: center; margin-bottom: 0.5rem; letter-spacing: -1px; }
+  .as-title span { color: var(--prime); }
+  .as-item { padding: 1rem 0.5rem; }
+  .as-emblem { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(145deg, #c01818, var(--prime)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 8px 28px rgba(209,30,30,0.3); font-size: 1.8rem; color: #fff; flex-direction: column; gap: 2px; }
+  .as-pct { font-family: var(--font-head); font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1; }
+  .as-label { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: -1px; }
+  .as-name { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; color: var(--base); margin-bottom: 0.6rem; line-height: 1.4; }
+  .as-desc { font-size: 0.88rem; color: #6b7280; line-height: 1.65; max-width: 220px; margin: 0 auto; }
+  .as-desc a { color: var(--prime); font-weight: 600; text-decoration: none; }
+  .as-desc a:hover { text-decoration: underline; }
 
   /* ─── ABOUT ─── */
-  .xab-sec { background: var(--c1); padding: 7rem 2rem; position: relative; overflow: hidden; }
-  .xab-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 0% 50%, rgba(192,24,24,0.12) 0%, transparent 60%); }
-  .xab-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
-  .xab-sec .xs-title { color: #fff; }
-  .xab-sec .xs-sub { color: rgba(255,255,255,0.55); }
-  .xab-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; transition: background 0.25s, border-color 0.25s; }
-  .xab-card:hover { background: rgba(192,24,24,0.1); border-color: rgba(192,24,24,0.3); }
-  .xab-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--c4), var(--c5)); border-radius: 14px; display: grid; place-items: center; font-size: 1.3rem; color: #fff; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(192,24,24,0.35); }
-  .xab-ctitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.05rem; color: #fff; margin-bottom: 0.5rem; }
-  .xab-ctxt { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
-  .xab-story { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; max-width: 680px; margin: 0 auto 3.5rem; text-align: center; }
+  .ab-sec { background: var(--base); padding: 7rem 2rem; position: relative; overflow: hidden; }
+  .ab-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 0% 50%, rgba(209,30,30,0.12) 0%, transparent 60%); }
+  .ab-wrap { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
+  .ab-sec .sec-heading { color: #fff; }
+  .ab-sec .sec-subtext { color: rgba(255,255,255,0.5); }
+  .ab-tile { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; transition: background 0.25s, border-color 0.25s; }
+  .ab-tile:hover { background: rgba(209,30,30,0.1); border-color: rgba(232,64,64,0.3); }
+  .ab-icon-box { width: 52px; height: 52px; background: linear-gradient(135deg, var(--prime), var(--bright)); border-radius: 14px; display: grid; place-items: center; font-size: 1.3rem; color: #fff; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(209,30,30,0.35); }
+  .ab-tile-title { font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; color: #fff; margin-bottom: 0.5rem; }
+  .ab-tile-body { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+  .ab-story { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; max-width: 680px; margin: 0 auto 3.5rem; text-align: center; }
 
   /* ─── CONTACT ─── */
-  .xct-sec { background: var(--c9); padding: 7rem 2rem; }
-  .xct-card { background: #fff; border-radius: 24px; padding: 2.5rem; border: 1.5px solid rgba(0,0,0,0.06); text-align: center; height: 100%; transition: box-shadow 0.25s, transform 0.25s; }
-  .xct-card:hover { box-shadow: var(--sh1); transform: translateY(-4px); }
-  .xct-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--c4), var(--c5)); border-radius: 16px; display: grid; place-items: center; font-size: 1.3rem; color: #fff; margin: 0 auto 1.25rem; box-shadow: var(--sh1); }
-  .xct-label { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1rem; color: var(--c1); margin-bottom: 0.4rem; }
-  .xct-val { font-size: 0.9rem; color: var(--c10); line-height: 1.6; }
-  .xct-val a { color: var(--c4); text-decoration: none; font-weight: 500; }
-  .xct-val a:hover { text-decoration: underline; }
+  .ct-sec { background: var(--offwhite); padding: 7rem 2rem; }
+  .ct-tile { background: #fff; border-radius: 22px; padding: 2.5rem; border: 1.5px solid rgba(0,0,0,0.06); text-align: center; height: 100%; transition: box-shadow 0.25s, transform 0.25s; }
+  .ct-tile:hover { box-shadow: var(--glow-sm); transform: translateY(-4px); }
+  .ct-icon-box { width: 56px; height: 56px; background: linear-gradient(135deg, var(--prime), var(--bright)); border-radius: 16px; display: grid; place-items: center; font-size: 1.3rem; color: #fff; margin: 0 auto 1.25rem; box-shadow: var(--glow-sm); }
+  .ct-heading { font-family: var(--font-head); font-weight: 700; font-size: 1rem; color: var(--base); margin-bottom: 0.4rem; }
+  .ct-detail { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .ct-detail a { color: var(--prime); text-decoration: none; font-weight: 500; }
+  .ct-detail a:hover { text-decoration: underline; }
 
   /* ─── PRIVACY ─── */
-  .xpv-sec { background: #fff; padding: 7rem 2rem; }
-  .xpv-inner { max-width: 860px; margin: 0 auto; }
-  .xpv-block { margin-bottom: 2.5rem; }
-  .xpv-h { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--c1); margin-bottom: 0.6rem; padding-left: 1rem; border-left: 3px solid var(--c4); }
-  .xpv-p { font-size: 0.92rem; color: #4a5568; line-height: 1.8; }
+  .pv-sec { background: #fff; padding: 7rem 2rem; }
+  .pv-wrap { max-width: 860px; margin: 0 auto; }
+  .pv-block { margin-bottom: 2.5rem; }
+  .pv-block-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--base); margin-bottom: 0.6rem; padding-left: 1rem; border-left: 3px solid var(--prime); }
+  .pv-block-body { font-size: 0.92rem; color: #4a5568; line-height: 1.8; }
 
   /* ─── TERMS ─── */
-  .xtm-sec { background: var(--c9); padding: 7rem 2rem; }
-  .xtm-inner { max-width: 860px; margin: 0 auto; }
-  .xtm-block { margin-bottom: 2.5rem; }
-  .xtm-h { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--c1); margin-bottom: 0.6rem; padding-left: 1rem; border-left: 3px solid var(--c5); }
-  .xtm-p { font-size: 0.92rem; color: #4a5568; line-height: 1.8; }
+  .tm-sec { background: var(--offwhite); padding: 7rem 2rem; }
+  .tm-wrap { max-width: 860px; margin: 0 auto; }
+  .tm-block { margin-bottom: 2.5rem; }
+  .tm-block-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: var(--base); margin-bottom: 0.6rem; padding-left: 1rem; border-left: 3px solid var(--bright); }
+  .tm-block-body { font-size: 0.92rem; color: #4a5568; line-height: 1.8; }
 
   /* ─── FOOTER ─── */
-  .xft-sec { background: var(--c1); padding: 3.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
-  .xft-inner { max-width: 1280px; margin: 0 auto; }
-  .xft-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 2rem; }
-  .xft-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .xft-links a { color: rgba(255,255,255,0.45); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
-  .xft-links a:hover { color: var(--c5); }
-  .xft-copy { font-size: 0.82rem; color: rgba(255,255,255,0.3); text-align: center; }
-  .xft-social { display: flex; gap: 12px; }
-  .xft-soc-btn { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.07); display: grid; place-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
-  .xft-soc-btn:hover { background: var(--c4); color: #fff; }
+  .ft-wrap { background: var(--base); padding: 3.5rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .ft-inner { max-width: 1300px; margin: 0 auto; }
+  .ft-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 2rem; }
+  .ft-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .ft-nav a { color: rgba(255,255,255,0.45); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+  .ft-nav a:hover { color: var(--accent); }
+  .ft-copyright { font-size: 0.82rem; color: rgba(255,255,255,0.3); text-align: center; }
+  .ft-socials { display: flex; gap: 12px; }
+  .ft-soc-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.07); display: grid; place-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .ft-soc-icon:hover { background: var(--prime); color: #fff; }
 
-  /* ─── FLOATING CALL BTN ─── */
-  .xfb-float { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; align-items: center; gap: 10px; background: #d13333; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; padding: 13px 22px; border-radius: 100px; text-decoration: none; box-shadow: 0 8px 32px rgba(255,60,90,0.45); border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; animation: xpulse 2.5s ease-in-out infinite; }
-  .xfb-float:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 12px 40px rgba(255,60,90,0.6); color: #fff; animation: none; }
-  @keyframes xpulse { 0%,100% { box-shadow: 0 8px 32px rgba(255,60,90,0.45); } 50% { box-shadow: 0 8px 48px rgba(255,60,90,0.75), 0 0 0 10px rgba(255,60,90,0.12); } }
+  /* ─── FLOATING BUTTON ─── */
+  .float-ring { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; align-items: center; gap: 10px; background: var(--prime); color: #fff; font-family: var(--font-head); font-weight: 700; font-size: 0.9rem; padding: 13px 22px; border-radius: 100px; text-decoration: none; box-shadow: 0 8px 32px rgba(209,30,30,0.45); border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; animation: ring-pulse 2.5s ease-in-out infinite; }
+  .float-ring:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 12px 40px rgba(209,30,30,0.6); color: #fff; animation: none; }
+  @keyframes ring-pulse { 0%,100% { box-shadow: 0 8px 32px rgba(209,30,30,0.45); } 50% { box-shadow: 0 8px 48px rgba(209,30,30,0.75), 0 0 0 10px rgba(209,30,30,0.12); } }
 
-  /* ─── SECTION DIVIDER ─── */
-  .xdiv { height: 1px; background: linear-gradient(90deg, transparent, rgba(192,24,24,0.15), transparent); }
+  /* ─── DIVIDER ─── */
+  .seg-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(209,30,30,0.15), transparent); }
 
-  /* ─── GUARANTEE ─── */
-  .xgr-sec { background: #fff; padding: 6rem 2rem; }
-  .xgr-inner { max-width: 1280px; margin: 0 auto; }
-  .xgr-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--c1); text-align: center; margin-bottom: 0.5rem; letter-spacing: -1px; line-height: 1.2; }
-  .xgr-title span { color: var(--c4); }
-  .xgr-item { padding: 1rem 0.5rem; }
-  .xgr-icon { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(145deg, #d94040, var(--c4)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 8px 28px rgba(192,24,24,0.3); position: relative; font-size: 1.8rem; color: #fff; flex-direction: column; gap: 2px; }
-  .xgr-pct { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1; }
-  .xgr-ai { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: -1px; }
-  .xgr-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--c1); margin-bottom: 0.6rem; line-height: 1.4; }
-  .xgr-desc { font-size: 0.88rem; color: #6b7280; line-height: 1.65; max-width: 220px; margin: 0 auto; }
-  .xgr-desc a { color: var(--c4); font-weight: 600; text-decoration: none; }
-  .xgr-desc a:hover { text-decoration: underline; }
-
-  /* ─── UTILITY ─── */
-  .xmt1 { margin-top: 4px; }
-  .xmt2 { margin-top: 1rem; }
+  /* ─── HELPERS ─── */
+  .u-mt-xs { margin-top: 4px; }
+  .u-mt-sm { margin-top: 1rem; }
 </style>
 </head>
 <body>
 
 <!-- FLOATING CALL BUTTON -->
-<a href="tel:+18664207644" class="xfb-float">
+<a href="tel:+18664207644" class="float-ring">
   <i class="fas fa-phone"></i> Call Now
 </a>
 
 <!-- ═══════════════════════════════════════
-     1. HEADER / NAV
+     1. NAVBAR
 ════════════════════════════════════════ -->
-<nav id="about" class="xn-wrap">
-  <div class="xn-inner">
-    <!-- Logo -->
-    <a href="#" class="xn-logo">
-      <div class="xn-logo-text"><img src="https://i.postimg.cc/d0TNv8FJ/logo.png" class="img-fluid" alt="Description of image" style="width: 200px;"></div>
+<nav class="nv-bar">
+  <div class="nv-container">
+    <a href="#" class="nv-brand">
+      <img src="https://i.postimg.cc/4NDmxZTf/main-logo.png" class="img-fluid" alt="VaultGuard logo" style="width: 200px;">
     </a>
-    <!-- Desktop Menu -->
-    <ul class="xn-menu d-none d-lg-flex">
-      <li><a href="#about-sec">About</a></li>
-      <li><a href="#contact-sec">Contact</a></li>
-      <li><a href="#privacy-sec">Privacy</a></li>
-      <li><a href="#terms-sec">Terms</a></li>
+    <ul class="nv-links d-none d-lg-flex">
+      <li><a href="#about-us">About</a></li>
+      <li><a href="#reach-us">Contact</a></li>
+      <li><a href="#privacy-policy">Privacy</a></li>
+      <li><a href="#terms-of-use">Terms</a></li>
     </ul>
   </div>
 </nav>
-<img src="https://i.postimg.cc/kXkLXHXd/zeroweb.webp" class="img-fluid" alt="Description of image" style="width: 100%;">
+
+<!-- FULL-WIDTH BANNER IMAGE -->
+<img src="https://i.postimg.cc/jSMmhqdN/hero-banner.webp" class="img-fluid" alt="VaultGuard Security Banner" style="width: 100%;">
+
 <!-- ═══════════════════════════════════════
-     2. HERO BANNER
+     2. HERO (hidden — banner takes priority)
 ════════════════════════════════════════ -->
-<section class="xh-sec" style="display:none;">
-  <div class="xh-bg"></div>
-  <div class="xh-grid"></div>
-  <div class="xh-content w-100">
-    <div class="row align-items-center g-5" style="max-width:1280px;margin:0 auto;">
+<section class="hs-wrap" style="display:none;">
+  <div class="hs-overlay"></div>
+  <div class="hs-dots"></div>
+  <div class="hs-body">
+    <div class="row align-items-center g-5" style="max-width:1300px;margin:0 auto;">
       <div class="col-lg-6">
-        <div class="xh-badge"><i class="fas fa-bolt"></i> AI-Powered Protection</div>
-        <h1 class="xh-title">Stay <em>Secure</em><br>Against Every<br>Threat.</h1>
-        <p class="xh-sub">Real-time antivirus, identity protection, and privacy tools that work silently in the background — so you never have to worry.</p>
-      <div class="col-lg-6 d-none d-lg-flex justify-content-center">
-        <div class="xh-shield">
-          <svg class="xh-shield-svg" viewBox="0 0 400 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#c01818" stop-opacity="0.5"/>
-                <stop offset="100%" stop-color="#e84040" stop-opacity="0.2"/>
-              </linearGradient>
-              <linearGradient id="sg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#c01818"/>
-                <stop offset="100%" stop-color="#e84040"/>
-              </linearGradient>
-            </defs>
-            <!-- Outer glow rings -->
-            <ellipse cx="200" cy="220" rx="190" ry="190" fill="rgba(192,24,24,0.04)"/>
-            <ellipse cx="200" cy="220" rx="155" ry="155" fill="rgba(192,24,24,0.06)"/>
-            <!-- Shield body -->
-            <path d="M200 28 L348 88 L348 216 C348 304 272 370 200 400 C128 370 52 304 52 216 L52 88 Z" fill="url(#sg1)" stroke="url(#sg2)" stroke-width="2.5"/>
-            <!-- Inner shield detail -->
-            <path d="M200 64 L316 112 L316 212 C316 282 256 336 200 360 C144 336 84 282 84 212 L84 112 Z" fill="rgba(232,64,64,0.08)" stroke="rgba(232,64,64,0.2)" stroke-width="1.5"/>
-            <!-- Checkmark -->
-            <path d="M145 218 L180 253 L262 172" stroke="url(#sg2)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Dots -->
-            <circle cx="200" cy="48" r="5" fill="#e84040" opacity="0.6"/>
-            <circle cx="344" cy="104" r="4" fill="#c01818" opacity="0.5"/>
-            <circle cx="58" cy="104" r="4" fill="#c01818" opacity="0.5"/>
-          </svg>
+        <div class="hs-pill"><i class="fas fa-bolt"></i> Next-Gen Threat Defense</div>
+        <h1 class="hs-headline">Guard Your <em>Digital Life</em><br>From Every<br>Angle.</h1>
+        <p class="hs-tagline">Comprehensive antivirus, identity monitoring, and privacy tools that run quietly in the background — so you stay protected around the clock.</p>
+        <div class="hs-actions">
+          <a href="#reach-us" class="hs-cta-main">Get Protected Now</a>
+          <a href="#pricing-plans" class="hs-cta-ghost">View Plans</a>
+        </div>
+        <div class="hs-metrics">
+          <div>
+            <div class="hs-metric-val">60M+</div>
+            <div class="hs-metric-txt">Devices Protected</div>
+          </div>
+          <div>
+            <div class="hs-metric-val">99.97%</div>
+            <div class="hs-metric-txt">Threat Detection Rate</div>
+          </div>
+          <div>
+            <div class="hs-metric-val">24/7</div>
+            <div class="hs-metric-txt">Live Expert Support</div>
+          </div>
         </div>
       </div>
     </div>
@@ -254,348 +264,349 @@
 </section>
 
 <!-- ═══════════════════════════════════════
-     3. CALL NOW SECTION
+     3. HOTLINE STRIP
 ════════════════════════════════════════ -->
-<section class="xcn-sec">
-  <div class="xcn-inner">
-    <div class="xcn-label">🛡️ Need help right now? Talk to a security expert — available 24/7</div>
-    <a href="tel:+18664207644" class="xcn-btn">
-      <i class="fas fa-phone"></i> Call Now: +1-866-420-7644
+<section class="hl-strip">
+  <div class="hl-strip-inner">
+    <div class="hl-strip-msg">🔒 Speak with a security specialist right now — available 24 hours a day, 7 days a week</div>
+    <a href="tel:+18664207644" class="hl-strip-btn">
+      Call Support: +1 (866) 420-7644
     </a>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     GUARANTEE SECTION
+     4. OUR PROMISE (Guarantee)
 ════════════════════════════════════════ -->
-<section class="xgr-sec">
-  <div class="xgr-inner">
-    <h2 class="xgr-title">The ShieldCore Protection <span>Guarantee</span></h2>
+<section class="as-sec">
+  <div class="as-inner">
+    <h2 class="as-title">The <span>Commitment</span></h2>
     <div class="row g-5 justify-content-center text-center mt-2">
       <div class="col-lg-3 col-sm-6">
-        <div class="xgr-item">
-          <div class="xgr-icon">
+        <div class="as-item">
+          <div class="as-emblem">
             <i class="fas fa-medal"></i>
-            <span class="xgr-pct">100%</span>
+            <span class="as-pct">100%</span>
           </div>
-          <div class="xgr-name">30-Day Money-Back<br>Guarantee</div>
-          <div class="xgr-desc">for peace of mind with a risk-free option to try any plan</div>
+          <div class="as-name">30-Day Full<br>Refund Guarantee</div>
+          <div class="as-desc">Try any plan completely risk-free — full refund if you're not satisfied</div>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="xgr-item">
-          <div class="xgr-icon">
-            <i class="fas fa-shield-halved"></i>
+        <div class="as-item">
+          <div class="as-emblem">
+            <i class="fas fa-lock"></i>
           </div>
-          <div class="xgr-name">Personalized<br>Protection</div>
-          <div class="xgr-desc">to meet the individualized needs of you and your family</div>
+          <div class="as-name">Tailored<br>Coverage</div>
+          <div class="as-desc">Security plans built around your unique lifestyle and household needs</div>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="xgr-item">
-          <div class="xgr-icon">
-            <span class="xgr-ai">AI</span>
+        <div class="as-item">
+          <div class="as-emblem">
+            <span class="as-label">AI</span>
           </div>
-          <div class="xgr-name">AI-Powered<br>Technology</div>
-          <div class="xgr-desc">for real-time protection against new and evolving threats</div>
+          <div class="as-name">Machine Learning<br>Defense Engine</div>
+          <div class="as-desc">Adaptive AI models that identify and neutralize threats in real time</div>
         </div>
       </div>
       <div class="col-lg-3 col-sm-6">
-        <div class="xgr-item">
-          <div class="xgr-icon">
+        <div class="as-item">
+          <div class="as-emblem">
             <i class="fas fa-headset"></i>
           </div>
-          <div class="xgr-name">24/7 Customer<br>Assistance</div>
-          <div class="xgr-desc">with around-the-clock <a href="#contact-sec">support</a> and troubleshooting</div>
+          <div class="as-name">Round-the-Clock<br>Expert Help</div>
+          <div class="as-desc">Real professionals ready to assist via phone or chat at any hour — <a href="#reach-us">reach us anytime</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="xdiv"></div>
+<div class="seg-line"></div>
 
 <!-- ═══════════════════════════════════════
-     4. PLANS
+     5. PRICING PLANS
 ════════════════════════════════════════ -->
-<section id="plans-sec" class="xpl-sec">
-  <div style="max-width:1280px;margin:0 auto;">
-    <h2 class="xs-title">All Plans Backed by Our<br>30-Day Money-Back Guarantee</h2>
-    <p class="xs-sub">Choose the protection level that fits your life. Upgrade or cancel anytime.</p>
+<section id="pricing-plans" class="pr-sec">
+  <div style="max-width:1300px;margin:0 auto;">
+    <h2 class="sec-heading">Every Plan Includes Our<br>30-Day Money-Back Promise</h2>
+    <p class="sec-subtext">Pick the coverage level that fits your household. Upgrade, downgrade, or cancel whenever you want.</p>
 
     <div class="row g-4 align-items-stretch justify-content-center">
-      <!-- Plan 1: Essential -->
+
+      <!-- PLAN 1: Starter -->
       <div class="col-lg-4 col-md-6 d-flex">
-        <div class="xpl-card d-flex flex-column w-100">
-          <div class="xpl-tag">Best Starter Value</div>
-          <div class="xpl-name">Essential</div>
-          <div class="xpl-price"><sup>$</sup>39<span>.99<sup>*</sup> /yr</span></div>
-          <div class="xpl-old">$119.99 <span class="xpl-save">Save $80.00</span></div>
-          <div class="xpl-devices"><i class="fas fa-laptop me-1"></i> 5 devices &nbsp;·&nbsp; 1 user</div>
-          <a href="#contact-sec" class="xpl-buy xpl-buy-outline">Buy</a>
-          <ul class="xpl-feat flex-grow-1">
-            <li><i class="fas fa-check"></i> Scam Detector</li>
-            <li><i class="fas fa-check"></i> Award-winning Antivirus</li>
-            <li><i class="fas fa-check"></i> Secure VPN</li>
-            <li><i class="fas fa-check"></i> Identity monitoring & alerts</li>
-            <li><i class="fas fa-check"></i> Web protection</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Personal info & online account scans</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Social Privacy Manager</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Up to $1M identity theft coverage</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Bank & credit card transaction monitoring</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Credit score, report & monitoring</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Identity restoration support</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Credit lock & security freeze</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Parental controls</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> 401(k), investment & loan monitoring</li>
+        <div class="plan-tile d-flex flex-column w-100">
+          <div class="plan-category">Entry-Level Protection</div>
+          <div class="plan-title">Starter Shield</div>
+          <div class="plan-amount"><sup>$</sup>34<span>.99<sup>*</sup> /yr</span></div>
+          <div class="plan-was">$109.99 <span class="plan-savings">Save $75.00</span></div>
+          <div class="plan-scope"><i class="fas fa-laptop me-1"></i> Up to 5 devices &nbsp;·&nbsp; 1 user</div>
+          <a href="#reach-us" class="plan-cta plan-cta-lined">Get Started</a>
+          <ul class="plan-perks flex-grow-1">
+            <li><i class="fas fa-check"></i> Fraud &amp; Scam Alert System</li>
+            <li><i class="fas fa-check"></i> Industry-leading Antivirus Engine</li>
+            <li><i class="fas fa-check"></i> Encrypted VPN Access</li>
+            <li><i class="fas fa-check"></i> Identity Breach Monitoring</li>
+            <li><i class="fas fa-check"></i> Safe Browsing &amp; Web Filter</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Personal Data Removal Requests</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Social Media Privacy Scanner</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Up to $1M ID Theft Reimbursement</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Bank &amp; Card Transaction Alerts</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Credit Score Tracker</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Identity Restoration Specialists</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Credit Freeze &amp; Lock Tools</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Family Parental Controls</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Investment &amp; Retirement Monitoring</li>
           </ul>
-          <a href="#plans-sec" class="xpl-explore">Explore Starter Plans →</a>
+          <a href="#pricing-plans" class="plan-more">See Starter Plan Details →</a>
         </div>
       </div>
 
-      <!-- Plan 2: Advanced Individual (Featured) -->
+      <!-- PLAN 2: Premium Individual (Featured) -->
       <div class="col-lg-4 col-md-6 d-flex">
-        <div class="xpl-card xpl-featured d-flex flex-column w-100">
-          <div class="xpl-badge">⭐ Best User Value</div>
-          <div class="xpl-tag mt-3">McAfee+ Advanced Individual</div>
-          <div class="xpl-name">Advanced Individual</div>
-          <div class="xpl-price"><sup>$</sup>89<span>.99<sup>*</sup> /yr</span></div>
-          <div class="xpl-old">$199.99 <span class="xpl-save">Save $110.00</span></div>
-          <div class="xpl-devices"><i class="fas fa-infinity me-1"></i> All devices &nbsp;·&nbsp; 1 user</div>
-          <a href="#contact-sec" class="xpl-buy xpl-buy-primary">Buy</a>
-          <ul class="xpl-feat flex-grow-1">
-            <li><i class="fas fa-check"></i> Scam Detector</li>
-            <li><i class="fas fa-check"></i> Award-winning Antivirus</li>
-            <li><i class="fas fa-check"></i> Secure VPN</li>
-            <li><i class="fas fa-check"></i> Identity monitoring & alerts</li>
-            <li><i class="fas fa-check"></i> Web protection</li>
-            <li><i class="fas fa-check"></i> Personal info & online account removal</li>
-            <li><i class="fas fa-check"></i> Social Privacy Manager</li>
-            <li><i class="fas fa-check"></i> Up to $1M identity theft coverage</li>
-            <li><i class="fas fa-check"></i> Bank & credit card transaction monitoring</li>
-            <li><i class="fas fa-check"></i> Credit score, report & monitoring</li>
-            <li><i class="fas fa-check"></i> Identity restoration support</li>
-            <li><i class="fas fa-check"></i> Credit lock & security freeze</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> Parental controls</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> 401(k), investment & loan monitoring</li>
+        <div class="plan-tile plan-highlight d-flex flex-column w-100">
+          <div class="plan-ribbon">⭐ Most Popular Choice</div>
+          <div class="plan-category u-mt-sm">Complete Personal Security</div>
+          <div class="plan-title">Premium Individual</div>
+          <div class="plan-amount"><sup>$</sup>84<span>.99<sup>*</sup> /yr</span></div>
+          <div class="plan-was">$189.99 <span class="plan-savings">Save $105.00</span></div>
+          <div class="plan-scope"><i class="fas fa-infinity me-1"></i> Unlimited devices &nbsp;·&nbsp; 1 user</div>
+          <a href="#reach-us" class="plan-cta plan-cta-filled">Get Started</a>
+          <ul class="plan-perks flex-grow-1">
+            <li><i class="fas fa-check"></i> Fraud &amp; Scam Alert System</li>
+            <li><i class="fas fa-check"></i> Industry-leading Antivirus Engine</li>
+            <li><i class="fas fa-check"></i> Encrypted VPN Access</li>
+            <li><i class="fas fa-check"></i> Identity Breach Monitoring</li>
+            <li><i class="fas fa-check"></i> Safe Browsing &amp; Web Filter</li>
+            <li><i class="fas fa-check"></i> Personal Data Removal Requests</li>
+            <li><i class="fas fa-check"></i> Social Media Privacy Scanner</li>
+            <li><i class="fas fa-check"></i> Up to $1M ID Theft Reimbursement</li>
+            <li><i class="fas fa-check"></i> Bank &amp; Card Transaction Alerts</li>
+            <li><i class="fas fa-check"></i> Credit Score Tracker</li>
+            <li><i class="fas fa-check"></i> Identity Restoration Specialists</li>
+            <li><i class="fas fa-check"></i> Credit Freeze &amp; Lock Tools</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Family Parental Controls</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Investment &amp; Retirement Monitoring</li>
           </ul>
-          <a href="#plans-sec" class="xpl-explore">Explore Individual Plans →</a>
+          <a href="#pricing-plans" class="plan-more">See Individual Plan Details →</a>
         </div>
       </div>
 
-      <!-- Plan 3: Advanced Family -->
+      <!-- PLAN 3: Family Complete -->
       <div class="col-lg-4 col-md-6 d-flex">
-        <div class="xpl-card d-flex flex-column w-100">
-          <div class="xpl-tag">Best Family Value</div>
-          <div class="xpl-name">Advanced Family</div>
-          <div class="xpl-price"><sup>$</sup>119<span>.99<sup>*</sup> /yr</span></div>
-          <div class="xpl-old">$269.99 <span class="xpl-save">Save $150.00</span></div>
-          <div class="xpl-devices"><i class="fas fa-infinity me-1"></i> All devices &nbsp;·&nbsp; 6 family members</div>
-          <a href="#contact-sec" class="xpl-buy xpl-buy-outline">Buy</a>
-          <ul class="xpl-feat flex-grow-1">
-            <li><i class="fas fa-check"></i> Scam Detector</li>
-            <li><i class="fas fa-check"></i> Award-winning Antivirus</li>
-            <li><i class="fas fa-check"></i> Secure VPN</li>
-            <li><i class="fas fa-check"></i> Identity monitoring & alerts</li>
-            <li><i class="fas fa-check"></i> Web protection</li>
-            <li><i class="fas fa-check"></i> Personal info & online account removal</li>
-            <li><i class="fas fa-check"></i> Social Privacy Manager</li>
-            <li><i class="fas fa-check"></i> Up to $1M identity theft coverage</li>
-            <li><i class="fas fa-check"></i> Bank & credit card transaction monitoring</li>
-            <li><i class="fas fa-check"></i> Credit score, report & monitoring</li>
-            <li><i class="fas fa-check"></i> Identity restoration support</li>
-            <li><i class="fas fa-check"></i> Credit lock & security freeze</li>
-            <li><i class="fas fa-check"></i> Parental controls</li>
-            <li class="xpl-no"><i class="fas fa-xmark"></i> 401(k), investment & loan monitoring</li>
+        <div class="plan-tile d-flex flex-column w-100">
+          <div class="plan-category">Best Household Value</div>
+          <div class="plan-title">Family Complete</div>
+          <div class="plan-amount"><sup>$</sup>114<span>.99<sup>*</sup> /yr</span></div>
+          <div class="plan-was">$259.99 <span class="plan-savings">Save $145.00</span></div>
+          <div class="plan-scope"><i class="fas fa-infinity me-1"></i> All devices &nbsp;·&nbsp; Up to 6 members</div>
+          <a href="#reach-us" class="plan-cta plan-cta-lined">Get Started</a>
+          <ul class="plan-perks flex-grow-1">
+            <li><i class="fas fa-check"></i> Fraud &amp; Scam Alert System</li>
+            <li><i class="fas fa-check"></i> Industry-leading Antivirus Engine</li>
+            <li><i class="fas fa-check"></i> Encrypted VPN Access</li>
+            <li><i class="fas fa-check"></i> Identity Breach Monitoring</li>
+            <li><i class="fas fa-check"></i> Safe Browsing &amp; Web Filter</li>
+            <li><i class="fas fa-check"></i> Personal Data Removal Requests</li>
+            <li><i class="fas fa-check"></i> Social Media Privacy Scanner</li>
+            <li><i class="fas fa-check"></i> Up to $1M ID Theft Reimbursement</li>
+            <li><i class="fas fa-check"></i> Bank &amp; Card Transaction Alerts</li>
+            <li><i class="fas fa-check"></i> Credit Score Tracker</li>
+            <li><i class="fas fa-check"></i> Identity Restoration Specialists</li>
+            <li><i class="fas fa-check"></i> Credit Freeze &amp; Lock Tools</li>
+            <li><i class="fas fa-check"></i> Family Parental Controls</li>
+            <li class="perk-off"><i class="fas fa-xmark"></i> Investment &amp; Retirement Monitoring</li>
           </ul>
-          <a href="#plans-sec" class="xpl-explore">Explore Family Plans →</a>
+          <a href="#pricing-plans" class="plan-more">See Family Plan Details →</a>
         </div>
       </div>
     </div>
 
-    <p class="xpl-guarantee mt-4">
-      <i class="fas fa-shield-halved"></i>
-      *First year price. Introductory pricing for new customers. <a href="#terms-sec" style="color:var(--c4);">See offer details.</a>
+    <p class="plan-footnote mt-4">
+      <i class="fas fa-lock"></i>
+      *First-year introductory price for new subscribers. Renewal rates apply thereafter. <a href="#terms-of-use" style="color:var(--prime);">View full offer terms.</a>
     </p>
   </div>
 </section>
 
-<div class="xdiv"></div>
+<div class="seg-line"></div>
 
 <!-- ═══════════════════════════════════════
-     5. ABOUT US
+     6. ABOUT US
 ════════════════════════════════════════ -->
-<section id="about-sec" class="xab-sec">
-  <div class="xab-bg"></div>
-  <div class="xab-inner">
-    <h2 class="xs-title">About ShieldCore</h2>
-    <p class="xab-story">Founded in 2010, ShieldCore has been at the forefront of digital security innovation. Our mission is simple: make enterprise-grade protection accessible to everyone — individuals, families, and businesses alike. Trusted by over 50 million users worldwide, we combine cutting-edge AI with human expertise to keep you safe in an increasingly complex threat landscape.</p>
+<section id="about-us" class="ab-sec">
+  <div class="ab-glow"></div>
+  <div class="ab-wrap">
+    <h2 class="sec-heading">About</h2>
+    <p class="ab-story">Established in 2012, VaultGuard was built on one principle: everyone deserves enterprise-grade security without the enterprise price tag. Today, more than 60 million people across 140 countries rely on our platform to keep their devices, identities, and finances safe. We combine advanced machine learning with a team of dedicated human analysts to stay one step ahead of every emerging threat.</p>
 
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
-        <div class="xab-card">
-          <div class="xab-icon"><i class="fas fa-brain"></i></div>
-          <div class="xab-ctitle">AI-First Detection</div>
-          <div class="xab-ctxt">Our machine learning models analyze millions of threat signals per second to detect zero-day attacks before they execute.</div>
+        <div class="ab-tile">
+          <div class="ab-icon-box"><i class="fas fa-microchip"></i></div>
+          <div class="ab-tile-title">ML-Driven Detection</div>
+          <div class="ab-tile-body">Our adaptive models process tens of millions of threat signals every minute, stopping zero-day attacks before they reach your device.</div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="xab-card">
-          <div class="xab-icon"><i class="fas fa-user-shield"></i></div>
-          <div class="xab-ctitle">Identity Protection</div>
-          <div class="xab-ctxt">We monitor the dark web, data brokers, and breach databases around the clock so your identity stays yours.</div>
+        <div class="ab-tile">
+          <div class="ab-icon-box"><i class="fas fa-fingerprint"></i></div>
+          <div class="ab-tile-title">Identity Safeguarding</div>
+          <div class="ab-tile-body">We scan the dark web, data broker registries, and breach archives continuously so your personal information never falls into the wrong hands.</div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="xab-card">
-          <div class="xab-icon"><i class="fas fa-globe-americas"></i></div>
-          <div class="xab-ctitle">Global Threat Intel</div>
-          <div class="xab-ctxt">Insights from 50M+ protected devices worldwide feed into a shared threat intelligence network that benefits every customer.</div>
+        <div class="ab-tile">
+          <div class="ab-icon-box"><i class="fas fa-network-wired"></i></div>
+          <div class="ab-tile-title">Worldwide Threat Network</div>
+          <div class="ab-tile-body">Anonymized signals from 60M+ protected endpoints feed a shared intelligence grid — every customer benefits from the collective defense.</div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="xab-card">
-          <div class="xab-icon"><i class="fas fa-headset"></i></div>
-          <div class="xab-ctitle">24/7 Expert Support</div>
-          <div class="xab-ctxt">Real security professionals available via phone, chat, and email — no bots, no runaround, just answers when you need them.</div>
+        <div class="ab-tile">
+          <div class="ab-icon-box"><i class="fas fa-comments"></i></div>
+          <div class="ab-tile-title">Human-First Support</div>
+          <div class="ab-tile-body">Certified security specialists are available by phone and chat at any hour — real people, real answers, zero runaround.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="xdiv"></div>
+<div class="seg-line"></div>
 
 <!-- ═══════════════════════════════════════
-     6. CONTACT US
+     7. CONTACT US
 ════════════════════════════════════════ -->
-<section id="contact-sec" class="xct-sec">
-  <div style="max-width:1280px;margin:0 auto;">
-    <h2 class="xs-title">Contact Us</h2>
-    <p class="xs-sub">Our security experts are standing by to help you find the right protection for your needs.</p>
+<section id="reach-us" class="ct-sec">
+  <div style="max-width:1300px;margin:0 auto;">
+    <h2 class="sec-heading">Contact Us</h2>
+    <p class="sec-subtext">Our certified security advisors are ready to help you choose the right protection — and guide you through setup every step of the way.</p>
 
     <div class="row g-4 justify-content-center">
       <div class="col-md-4 col-sm-6 d-flex">
-        <div class="xct-card w-100">
-          <div class="xct-icon"><i class="fas fa-phone"></i></div>
-          <div class="xct-label">Phone Support</div>
-          <div class="xct-val"><a href="tel:+18664207644">+1-866-420-7644</a><br>Mon–Sun, 24/7</div>
+        <div class="ct-tile w-100">
+          <div class="ct-icon-box"><i class="fas fa-phone"></i></div>
+          <div class="ct-heading">Phone Support</div>
+          <div class="ct-detail"><a href="tel:+18664207644">+1 (866) 420-7644</a><br>Available 24/7, every day</div>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 d-flex">
-        <div class="xct-card w-100">
-          <div class="xct-icon"><i class="fas fa-envelope"></i></div>
-          <div class="xct-label">Email Us</div>
-          <div class="xct-val"><a href="mailto:support@shieldcore.com">mcafee@shieldcore.com</a><br>Response within 2 hours</div>
+        <div class="ct-tile w-100">
+          <div class="ct-icon-box"><i class="fas fa-envelope"></i></div>
+          <div class="ct-heading">Email Support</div>
+          <div class="ct-detail"><a href="mailto:support@vaultguard.com">support@vaultguard.com</a><br>Replies within 2 hours</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="xdiv"></div>
+<div class="seg-line"></div>
 
 <!-- ═══════════════════════════════════════
-     7. PRIVACY POLICY
+     8. PRIVACY POLICY
 ════════════════════════════════════════ -->
-<section id="privacy-sec" class="xpv-sec">
-  <div class="xpv-inner">
-    <h2 class="xs-title" style="text-align:left;margin-bottom:0.5rem;">Privacy Policy</h2>
-    <p style="color:var(--c10);font-size:0.85rem;margin-bottom:2.5rem;">Last updated: April 13, 2026</p>
+<section id="privacy-policy" class="pv-sec">
+  <div class="pv-wrap">
+    <h2 class="sec-heading" style="text-align:left;margin-bottom:0.5rem;">Privacy Policy</h2>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2.5rem;">Last updated: April 14, 2026</p>
 
-    <div class="xpv-block">
-      <div class="xpv-h">1. Information We Collect</div>
-      <p class="xpv-p">We collect information you provide directly to us — such as name, email address, billing information, and device details — as well as information collected automatically when you use our services, including IP addresses, browser type, operating system, device identifiers, and usage data. We may also receive information from third-party sources such as credit bureaus and identity data providers to enhance our identity monitoring features.</p>
+    <div class="pv-block">
+      <div class="pv-block-title">1. Data We Collect</div>
+      <p class="pv-block-body">We collect information you provide when signing up or purchasing a plan — including your name, email address, payment details, and device information. We also gather data automatically during your use of the service, such as your IP address, browser type, operating system, and product usage patterns. In some cases, we may receive supplemental data from identity verification partners to power our monitoring features.</p>
     </div>
-    <div class="xpv-block">
-      <div class="xpv-h">2. How We Use Your Information</div>
-      <p class="xpv-p">Your information is used to provide, maintain, and improve our security services; process transactions and send billing-related communications; monitor threats and detect malicious activity on your behalf; send security alerts, product updates, and promotional materials (you may opt out at any time); and comply with legal obligations. We do not sell your personal information to third-party advertisers.</p>
+    <div class="pv-block">
+      <div class="pv-block-title">2. How We Use Your Data</div>
+      <p class="pv-block-body">Your information is used to deliver and improve our security services, process payments, send billing and account notifications, detect and respond to threats on your behalf, and send relevant product updates or promotional offers (which you can opt out of at any time). We do not sell your personal information to advertising networks.</p>
     </div>
-    <div class="xpv-block">
-      <div class="xpv-h">3. Information Sharing</div>
-      <p class="xpv-p">We may share your information with trusted service providers who assist us in operating our platform, processing payments, and delivering customer support — all under strict confidentiality agreements. We may also disclose information when required by law, to protect our rights, or in connection with a merger, acquisition, or sale of assets.</p>
+    <div class="pv-block">
+      <div class="pv-block-title">3. Data Sharing</div>
+      <p class="pv-block-body">We share your data only with carefully vetted service providers who help us run our platform, process transactions, and support customers — all under binding confidentiality agreements. We may also disclose information as required by applicable law, to protect our legal rights, or in the event of a business transfer such as a merger or acquisition.</p>
     </div>
-    <div class="xpv-block">
-      <div class="xpv-h">4. Data Retention & Security</div>
-      <p class="xpv-p">We retain your personal data for as long as your account is active or as needed to provide services, comply with legal obligations, and resolve disputes. We use industry-standard encryption (TLS 1.3, AES-256) and security practices to protect your data both in transit and at rest.</p>
+    <div class="pv-block">
+      <div class="pv-block-title">4. Retention &amp; Security</div>
+      <p class="pv-block-body">We keep your data for as long as your subscription is active or as required to fulfill legal obligations and resolve any disputes. All data is protected using TLS 1.3 transport encryption and AES-256 storage encryption, in line with current industry best practices.</p>
     </div>
-    <div class="xpv-block">
-      <div class="xpv-h">5. Your Rights</div>
-      <p class="xpv-p">Depending on your jurisdiction, you may have the right to access, correct, delete, or restrict processing of your personal data. To exercise these rights, contact us at privacy@shieldcore.com. We will respond within 30 days. California residents have additional rights under the CCPA, including the right to know and the right to opt out of data sales.</p>
+    <div class="pv-block">
+      <div class="pv-block-title">5. Your Rights</div>
+      <p class="pv-block-body">Depending on your location, you may have the right to access, correct, delete, or limit how we process your personal data. Submit requests to privacy@vaultguard.com and we will respond within 30 days. Residents of California have additional rights under the CCPA, including the right to know what data we hold and to opt out of any data sales.</p>
     </div>
-    <div class="xpv-block">
-      <div class="xpv-h">6. Cookies</div>
-      <p class="xpv-p">We use cookies and similar technologies to authenticate users, remember preferences, analyze traffic, and deliver relevant advertising. You can manage cookie preferences through your browser settings or our cookie preference center. Disabling certain cookies may affect functionality.</p>
+    <div class="pv-block">
+      <div class="pv-block-title">6. Cookies &amp; Tracking</div>
+      <p class="pv-block-body">We use cookies and similar technologies for authentication, preference storage, traffic analytics, and relevance-based messaging. You can manage or disable cookies through your browser settings or through our in-product cookie preference panel. Some features may be limited if certain cookies are disabled.</p>
     </div>
   </div>
 </section>
 
-<div class="xdiv"></div>
+<div class="seg-line"></div>
 
 <!-- ═══════════════════════════════════════
-     8. TERMS & CONDITIONS
+     9. TERMS & CONDITIONS
 ════════════════════════════════════════ -->
-<section id="terms-sec" class="xtm-sec">
-  <div class="xtm-inner">
-    <h2 class="xs-title" style="text-align:left;margin-bottom:0.5rem;">Terms &amp; Conditions</h2>
-    <p style="color:var(--c10);font-size:0.85rem;margin-bottom:2.5rem;">Last updated: April 13, 2026</p>
+<section id="terms-of-use" class="tm-sec">
+  <div class="tm-wrap">
+    <h2 class="sec-heading" style="text-align:left;margin-bottom:0.5rem;">Terms &amp; Conditions</h2>
+    <p style="color:var(--muted);font-size:0.85rem;margin-bottom:2.5rem;">Last updated: April 14, 2026</p>
 
-    <div class="xtm-block">
-      <div class="xtm-h">1. Acceptance of Terms</div>
-      <p class="xtm-p">By accessing or using ShieldCore's products and services, you agree to be bound by these Terms & Conditions and our Privacy Policy. If you do not agree, please discontinue use of our services immediately. These terms constitute a binding legal agreement between you and ShieldCore, Inc.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">1. Agreement to Terms</div>
+      <p class="tm-block-body">By accessing or using VaultGuard's products and services, you acknowledge and agree to these Terms &amp; Conditions along with our Privacy Policy. If you disagree with any part of these terms, please stop using our services immediately. This document forms a legally binding agreement between you and VaultGuard, LLC.</p>
     </div>
-    <div class="xtm-block">
-      <div class="xtm-h">2. Subscription & Billing</div>
-      <p class="xtm-p">Subscription fees are billed annually or monthly in advance. Introductory pricing applies to the first billing period only; renewal rates will be communicated prior to renewal. You may cancel at any time; cancellations take effect at the end of the current billing period. We offer a 30-day money-back guarantee for new customers on annual plans.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">2. Billing &amp; Subscriptions</div>
+      <p class="tm-block-body">Plans are billed on an annual or monthly basis, in advance. Introductory pricing applies to the initial billing cycle only; renewal pricing will be communicated before your subscription renews. You may cancel at any time, with cancellation taking effect at the close of your current billing period. New annual subscribers are eligible for a full refund within the first 30 days.</p>
     </div>
-    <div class="xtm-block">
-      <div class="xtm-h">3. License & Permitted Use</div>
-      <p class="xtm-p">ShieldCore grants you a limited, non-exclusive, non-transferable license to install and use the software on the number of devices specified in your plan. You may not reverse engineer, decompile, distribute, sublicense, or use our software for commercial resale. Unauthorized use may result in immediate termination of your account.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">3. Software License</div>
+      <p class="tm-block-body">VaultGuard grants you a limited, non-exclusive, non-transferable right to install and use our software on the number of devices permitted under your active plan. You may not reverse engineer, copy, resell, sublicense, or otherwise exploit our software for commercial gain. Violations may result in immediate account termination without refund.</p>
     </div>
-    <div class="xtm-block">
-      <div class="xtm-h">4. Identity Theft Coverage</div>
-      <p class="xtm-p">The $1M identity theft coverage included in qualifying plans is underwritten by a third-party insurer. Coverage is subject to the terms, conditions, and exclusions of the applicable insurance policy. ShieldCore is not the insurer. Please review the full policy documentation provided upon activation of coverage.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">4. Identity Theft Reimbursement</div>
+      <p class="tm-block-body">The up-to-$1M identity theft reimbursement available on qualifying plans is underwritten by an independent third-party insurer. Reimbursement is subject to the terms, conditions, and exclusions set out in the applicable insurance policy. VaultGuard is not the insurer. Full policy documentation is provided upon activation.</p>
     </div>
-    <div class="xtm-block">
-      <div class="xtm-h">5. Disclaimer of Warranties</div>
-      <p class="xtm-p">Our services are provided "as is" and "as available." While we strive for 99.9% uptime and maximum threat detection, ShieldCore does not warrant that the service will be uninterrupted, error-free, or completely effective against all threats. Use of our services does not guarantee immunity from all cyberattacks.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">5. Service Disclaimer</div>
+      <p class="tm-block-body">Our services are provided on an "as is" and "as available" basis. While we target maximum uptime and the highest possible detection rates, VaultGuard cannot guarantee that the service will be uninterrupted or that it will block every possible threat. Use of our software does not provide immunity from all cyber risks.</p>
     </div>
-    <div class="xtm-block">
-      <div class="xtm-h">6. Limitation of Liability</div>
-      <p class="xtm-p">To the maximum extent permitted by law, ShieldCore's total liability for any claim arising from use of our services shall not exceed the amount you paid us in the twelve months preceding the claim. We are not liable for indirect, incidental, special, punitive, or consequential damages.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">6. Liability Limits</div>
+      <p class="tm-block-body">To the fullest extent permitted by law, VaultGuard's aggregate liability for claims arising from use of our services shall not exceed the total fees you paid us in the twelve months prior to the claim. We are not liable for indirect, incidental, consequential, punitive, or special damages of any kind.</p>
     </div>
-    <div class="xtm-block">
-      <div class="xtm-h">7. Changes to Terms</div>
-      <p class="xtm-p">We reserve the right to modify these terms at any time. We will provide at least 30 days' notice of material changes via email or in-app notification. Continued use of our services after the effective date constitutes acceptance of the revised terms.</p>
+    <div class="tm-block">
+      <div class="tm-block-title">7. Updates to These Terms</div>
+      <p class="tm-block-body">We reserve the right to revise these terms at any time. We will notify you of material changes at least 30 days in advance via email or through an in-app notice. Continuing to use our services after the effective date of any revision constitutes your acceptance of the updated terms.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     9. FOOTER
+     10. FOOTER
 ════════════════════════════════════════ -->
-<footer class="xft-sec">
-  <div class="xft-inner">
-    <div class="xft-top">
-      <a href="#" class="xn-logo">
-        <div class="xn-logo-icon"><i class="fas fa-shield-halved"></i></div>
-        <div class="xn-logo-text">Shield<span>Core</span></div>
+<footer class="ft-wrap">
+  <div class="ft-inner">
+    <div class="ft-top">
+      <a href="#" class="nv-brand">
+        <div class="nv-brand-icon"><i class="fas fa-lock"></i></div>
+        <div class="nv-brand-name">Vault<span>Guard</span></div>
       </a>
-      <div class="xft-links">
-        <a href="#about-sec">About</a>
-        <a href="#contact-sec">Contact</a>
-        <a href="#privacy-sec">Privacy Policy</a>
-        <a href="#terms-sec">Terms & Conditions</a>
-        <a href="#plans-sec">Plans</a>
+      <div class="ft-nav">
+        <a href="#about-us">About</a>
+        <a href="#reach-us">Contact</a>
+        <a href="#privacy-policy">Privacy Policy</a>
+        <a href="#terms-of-use">Terms &amp; Conditions</a>
+        <a href="#pricing-plans">Plans</a>
       </div>
-      <div class="xft-social">
-        <a href="#" class="xft-soc-btn"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" class="xft-soc-btn"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="xft-soc-btn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="xft-soc-btn"><i class="fab fa-instagram"></i></a>
+      <div class="ft-socials">
+        <a href="#" class="ft-soc-icon"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" class="ft-soc-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="ft-soc-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="ft-soc-icon"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    <p class="xft-copy">© 2026 ShieldCore, Inc. All rights reserved. ShieldCore and the ShieldCore logo are trademarks of ShieldCore, Inc.</p>
+    <p class="ft-copyright">&copy; 2026 VaultGuard, LLC. All rights reserved. VaultGuard and the VaultGuard logo are trademarks of VaultGuard, LLC.</p>
   </div>
 </footer>
 
